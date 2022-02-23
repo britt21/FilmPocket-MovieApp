@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/movieHomeFragment">
+
+    <fragment
+        android:id="@+id/movieHomeFragment"
+        android:name="com.example.themoviepro.MovieHomeFragment"
+        android:label="fragment_movie_home"
+        tools:layout="@layout/fragment_movie_home" >
+        <action
+            android:id="@+id/action_movieHomeFragment_to_movieDetail"
+            app:destination="@id/movieDetail" />
+        <action
+            android:id="@+id/action_movieHomeFragment_to_favFragment"
+            app:destination="@id/favFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/movieDetail"
+        android:name="com.example.themoviepro.MovieDetail"
+        android:label="fragment_movie_detail"
+        tools:layout="@layout/fragment_movie_detail" >
+        <action
+            android:id="@+id/action_movieDetail_to_movieHomeFragment"
+            app:destination="@id/movieHomeFragment" />
+        <action
+            android:id="@+id/action_movieDetail_to_favFragment"
+            app:destination="@id/favFragment" />
+        <argument
+            android:name="moviedata"
+            app:argType="com.example.data.moviedata.Result" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/favFragment"
+        android:name="com.example.themoviepro.FavFragment"
+        android:label="fragment_fav"
+        tools:layout="@layout/fragment_fav" >
+        <action
+            android:id="@+id/action_favFragment_to_movieDetail"
+            app:destination="@id/movieDetail" />
+        <action
+            android:id="@+id/action_favFragment_to_movieHomeFragment"
+            app:destination="@id/movieHomeFragment" />
+        <argument
+            android:name="datanav"
+            app:argType="com.example.data.moviedata.Result" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.themoviepro.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
