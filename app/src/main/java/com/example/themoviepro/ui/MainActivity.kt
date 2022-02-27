@@ -1,10 +1,10 @@
-package com.example.themoviepro
+package com.example.themoviepro.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.example.themoviepro.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.content_main.*
-import kotlinx.android.synthetic.main.fragment_movie_home.*
 
 //https://api.themoviedb.org/3/movie/popular?api_key=0a9a56d12504c6d92ce90bc56144ef00&language=en-US&page=1
 @AndroidEntryPoint
@@ -16,4 +16,3 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar2)
     }
 }
-

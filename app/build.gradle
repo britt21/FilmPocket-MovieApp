@@ -1,3 +1,4 @@
+
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -9,9 +10,7 @@ plugins {
     id "org.jetbrains.kotlin.android"
 }
 
-//def API_KEY = '"' + ApiKey + '"' ?: '"Api key not found "'
-//def STRING = 'String'
-//
+
 
 android {
 
@@ -32,11 +31,9 @@ android {
         versionCode 1
         versionName "1.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "com.example.themoviepro.MainHiltTestRunner"
 
-//        each{type ->
-//            type.buildConfigField STRING, 'APIKEY', API_KEY
-//        }
+
     }
 
     buildTypes {
@@ -62,47 +59,46 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.test:runner:1.4.0'
+    implementation 'com.google.ar:core:1.29.0'
+    implementation 'androidx.test.espresso:espresso-contrib:3.4.0'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-
-
-
     testImplementation("io.mockk:mockk:1.10.2")
     androidTestImplementation("io.mockk:mockk:1.10.2")
+    androidTestImplementation 'org.mockito:mockito-android:3.2.4'
 
     testImplementation "com.google.truth:truth:1.1.3"
     androidTestImplementation "com.google.truth:truth:1.1.3"
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
     androidTestImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.0'
     testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha04'
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha04'
     androidTestImplementation 'androidx.test:rules:1.4.1-alpha03'
 
 
     debugImplementation "androidx.fragment:fragment-testing:1.4.1"
 
     testImplementation "org.robolectric:robolectric:4.7.3"
-    androidTestImplementation "org.robolectric:robolectric:4.7.3"
+//    androidTestImplementation "org.robolectric:robolectric:4.7.3"
 
-    //hilt test
-    // For Robolectric tests.
+//    //hilt test
+//    // For Robolectric tests.
     testImplementation("com.google.dagger:hilt-android-testing:2.38.1")
-    // ...with Kotlin.
+//    // ...with Kotlin.
     kaptTest("com.google.dagger:hilt-android-compiler:2.38.1")
-    // ...with Java.
+//    // ...with Java.
     testAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.38.1")
+//
 
-
-    // For instrumented tests.
+//    // For instrumented tests.
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
-    // ...with Kotlin.
+//    // ...with Kotlin.
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
-    // ...with Java.
+//    // ...with Java.
     androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.38.1")
+//
 
 
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0"
@@ -115,8 +111,6 @@ dependencies {
 
     implementation "com.squareup.retrofit2:retrofit:$version_retrofit"
     implementation "com.squareup.retrofit2:converter-scalars:$version_retrofit"
-
-
 
     //moshi
     implementation "com.squareup.moshi:moshi:$version_moshi"
@@ -134,7 +128,7 @@ dependencies {
     implementation "android.arch.navigation:navigation-fragment-ktx:$version_navigation"
     implementation "android.arch.navigation:navigation-ui-ktx:$version_navigation"
 
-
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
 
     ///Paging
@@ -189,22 +183,27 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.5'
 
 
+
+
 // HiltTest
-    // For Robolectric tests.
+//    // For Robolectric tests.
     testImplementation("com.google.dagger:hilt-android-testing:2.38.1")
-    // ...with Kotlin.
+//    // ...with Kotlin.
     kaptTest("com.google.dagger:hilt-android-compiler:2.38.1")
     // ...with Java.
     testAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.38.1")
 
 
-    // For instrumented tests.
+//    // For instrumented tests.
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
-    // ...with Kotlin.
-    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
-    // ...with Java.
+    androidTestImplementation 'com.google.dagger:hilt-android-testing:2.38.1'
+//    // ...with Kotlin.
+    kaptAndroidTest  'com.google.dagger:hilt-android-compiler:2.38.1'
+//    // ...with Java.
     androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.38.1")
 
     androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
     testImplementation "androidx.arch.core:core-testing:2.1.0"
+
 }
+

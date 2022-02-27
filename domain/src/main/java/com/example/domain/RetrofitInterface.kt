@@ -19,14 +19,3 @@ interface RetrofitInterface{
     ): Response<MovieData>
 }
 
-//
-//private val retrofit = Retrofit.Builder()
-//    .baseUrl(BASE_URL)
-//    .addConverterFactory(GsonConverterFactory.create())
-//    .build()
-//
-//object RetrofitApi{
-//    val RetrofitService : RetrofitInterface by lazy {
-//        retrofit.create(RetrofitInterface::class.java)
-//    }
-//}

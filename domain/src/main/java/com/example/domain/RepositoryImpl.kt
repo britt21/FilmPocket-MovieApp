@@ -1,5 +1,6 @@
 package com.example.domain
 
+import androidx.lifecycle.LiveData
 import com.example.data.moviedata.MovieDao
 import com.example.data.moviedata.MovieData
 import com.example.data.moviedata.MovieEntity
@@ -17,7 +18,7 @@ class RepositoryImpl  @Inject constructor(private val retrofitInterface: Retrofi
 
     }
 
-    override fun readData(): Flow<List<MovieEntity>> {
+    override fun readData(): LiveData<List<MovieEntity>> {
         return movieDao.readMovie()
     }
 

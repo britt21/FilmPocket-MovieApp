@@ -1,10 +1,7 @@
 package com.example.data.moviedata
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Update
+import androidx.room.*
 import retrofit2.http.GET
 import retrofit2.http.Query
 import java.util.concurrent.Flow
@@ -17,7 +14,7 @@ interface MovieDao {
 
 
     @androidx.room.Query("Select * From MovieEntity")
-    fun readMovie(): kotlinx.coroutines.flow.Flow<List<MovieEntity>>
+    fun readMovie(): LiveData<List<MovieEntity>>
 
 
 

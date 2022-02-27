@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/movieHomeFragment"
-        android:name="com.example.themoviepro.MovieHomeFragment"
+        android:name="com.example.themoviepro.ui.MovieHomeFragment"
         android:label="fragment_movie_home"
         tools:layout="@layout/fragment_movie_home" >
         <action
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/movieDetail"
-        android:name="com.example.themoviepro.MovieDetail"
+        android:name="com.example.themoviepro.ui.MovieDetail"
         android:label="fragment_movie_detail"
         tools:layout="@layout/fragment_movie_detail" >
         <action
@@ -32,10 +32,12 @@
             android:name="moviedata"
             app:argType="com.example.data.moviedata.Result" />
 
+
+
     </fragment>
     <fragment
         android:id="@+id/favFragment"
-        android:name="com.example.themoviepro.FavFragment"
+        android:name="com.example.themoviepro.ui.FavFragment"
         android:label="fragment_fav"
         tools:layout="@layout/fragment_fav" >
         <action
@@ -50,7 +52,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.example.themoviepro.SettingsFragment"
+        android:name="com.example.themoviepro.ui.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>

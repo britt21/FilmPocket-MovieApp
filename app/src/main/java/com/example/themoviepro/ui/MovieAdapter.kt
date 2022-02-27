@@ -1,15 +1,13 @@
-package com.example.themoviepro
+package com.example.themoviepro.ui
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
-import androidx.paging.DifferCallback
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
-import  com.example.data.moviedata.Result
-
+import com.example.data.moviedata.Result
 import com.example.themoviepro.databinding.ItemListBinding
 import kotlinx.android.synthetic.main.item_list.view.*
 
@@ -46,7 +44,10 @@ class MovieAdapter : ListAdapter<Result, MovieAdapter.MovieViewHolder>(DifferCal
         val curlist = getItem(position)
         holder.bind(curlist)
         holder.itemView.item_container.setOnClickListener {
-            val action = MovieHomeFragmentDirections.actionMovieHomeFragmentToMovieDetail(curlist)
+            val action =
+                MovieHomeFragmentDirections.actionMovieHomeFragmentToMovieDetail(
+curlist
+                )
             holder.itemView.findNavController().navigate(action)
         }
 

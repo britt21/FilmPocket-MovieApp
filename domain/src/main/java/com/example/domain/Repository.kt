@@ -1,5 +1,6 @@
 package com.example.domain
 
+import androidx.lifecycle.LiveData
 import com.example.data.moviedata.MovieData
 import com.example.data.moviedata.MovieEntity
 import retrofit2.Response
@@ -11,7 +12,7 @@ interface Repository {
 
     suspend fun InsertMovie(movieEntity: MovieEntity)
 
-    fun readData(): kotlinx.coroutines.flow.Flow<List<MovieEntity>>
+    fun readData(): LiveData<List<MovieEntity>>
 
 
 

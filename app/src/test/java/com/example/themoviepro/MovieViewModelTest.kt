@@ -1,17 +1,31 @@
 package com.example.themoviepro
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.data.moviedata.MovieData
 import com.example.data.moviedata.MovieEntity
 import com.example.data.moviedata.Result
-import com.example.domain.GetMoviesUseCases
-import com.example.domain.InsertMovieUseCase
-import com.example.domain.ReadDataUseCase
+import com.example.domain.usecases.GetMoviesUseCases
+import com.example.domain.usecases.InsertMovieUseCase
+import com.example.domain.usecases.ReadDataUseCase
+import com.example.themoviepro.ui.MovieViewModel
 import com.google.common.truth.Truth.assertThat
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.setMain
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-
+@ExperimentalCoroutinesApi
 class MovieViewModelTest {
+
+    @get:Rule
+    var instantTaskExecutorRule = InstantTaskExecutorRule()
+
+    val dispatcher = TestCoroutineDispatcher()
+
+
 
     lateinit var viewModel: MovieViewModel
     lateinit var getMoviesUseCases: GetMoviesUseCases
@@ -20,12 +34,15 @@ class MovieViewModelTest {
     lateinit var fakeMovieRepository: FakeMovieRepository
     @Before
     fun setup(){
+        Dispatchers.setMain(dispatcher)
         fakeMovieRepository = FakeMovieRepository()
         getMoviesUseCases = GetMoviesUseCases(fakeMovieRepository)
         insertMovieUseCase = InsertMovieUseCase(fakeMovieRepository)
         readDataUseCase = ReadDataUseCase(fakeMovieRepository)
         viewModel = MovieViewModel(getMoviesUseCases,insertMovieUseCase,readDataUseCase)
     }
+
+
 
     @Test
     fun `check that getmovies function correctly gets the data`(){
@@ -38,13 +55,11 @@ class MovieViewModelTest {
 
     @Test
     fun  `check that live data gets data sucessfully`(){
+        viewModel.getMovie("api-key", 1)
 
-        val movieresult = mutableListOf<Result>()
-        val news = MovieData(2,movieresult, 543, 23)
-        val newsEntity= MovieEntity(8,news)
-        viewModel.InsertMovie(newsEntity)
-        val movie = viewModel.livemovie.value
-        assertThat(movie).isNull()
+        val movie = viewModel.livemovie.getOrAwaitValue()
+        assertThat(movie).isNotNull()
     }
+
 
 }

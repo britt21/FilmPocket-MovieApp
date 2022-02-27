@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#040A29"
-    tools:context=".MovieDetail">
+    tools:context=".ui.MovieDetail">
 
 
     <com.google.android.material.card.MaterialCardView

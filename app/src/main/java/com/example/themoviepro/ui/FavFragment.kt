@@ -1,19 +1,18 @@
-package com.example.themoviepro
+package com.example.themoviepro.ui
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.themoviepro.databinding.FavItemBinding
 import com.example.themoviepro.databinding.FragmentFavBinding
 
 class FavFragment : Fragment() {
 
     lateinit var binding : FragmentFavBinding
-    val adapter =  MovieAdapter()
+    val adapter = MovieAdapter()
     private lateinit var viewModel: MovieViewModel
 
 
@@ -28,6 +27,11 @@ class FavFragment : Fragment() {
 
         binding.favList.adapter = adapter
 
+        viewModel.livemovie.observe(this, Observer { fav ->
+
+        adapter.submitList(fav.results)
+
+        })
         ReadData()
 
         return binding.root
